@@ -1,12 +1,16 @@
 package com.example.musicplayer
 
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.musicplayer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     //create binding:
-    lateinit var binding:ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
+    //create media player:
+    lateinit var mediaPlayer: MediaPlayer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -16,13 +20,13 @@ class MainActivity : AppCompatActivity() {
         prepareMusic()
 
         //click on btn play and pause:
-        binding.btnPlayPause.setOnClickListener {configureMusic()}
+        binding.btnPlayPause.setOnClickListener { configureMusic() }
         //click on btn go before:
-        binding.btnGoBefore.setOnClickListener {goBeforeMusic()}
+        binding.btnGoBefore.setOnClickListener { goBeforeMusic() }
         //click on btn go after:
-        binding.btnGoAfter.setOnClickListener {goAfterMusic()}
+        binding.btnGoAfter.setOnClickListener { goAfterMusic() }
         //click on btn volume on off:
-        binding.btnVolumeOfOn.setOnClickListener {configureVolume()}
+        binding.btnVolumeOfOn.setOnClickListener { configureVolume() }
     }
 
     private fun prepareMusic() {
