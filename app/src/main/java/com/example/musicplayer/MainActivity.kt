@@ -11,5 +11,32 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //prepare music:
+        prepareMusic()
+
+        //click on btn play and pause:
+        binding.btnPlayPause.setOnClickListener {configureMusic()}
+        //click on btn go before:
+        binding.btnGoBefore.setOnClickListener {goBeforeMusic()}
+        //click on btn go after:
+        binding.btnGoAfter.setOnClickListener {goAfterMusic()}
+        //click on btn volume on off:
+        binding.btnVolumeOfOn.setOnClickListener {configureVolume()}
+    }
+
+    private fun prepareMusic() {
+    }
+
+    private fun configureVolume() {
+    }
+
+    private fun goAfterMusic() {
+    }
+
+    private fun goBeforeMusic() {
+    }
+
+    private fun configureMusic() {
     }
 }
