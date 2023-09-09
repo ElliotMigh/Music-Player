@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_pause.xml" value="0.137" />
+        <entry key="app/src/main/res/drawable/ic_volume_off.xml" value="0.137" />
+        <entry key="app/src/main/res/drawable/shape_play.xml" value="0.137" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
       </map>
     </option>
