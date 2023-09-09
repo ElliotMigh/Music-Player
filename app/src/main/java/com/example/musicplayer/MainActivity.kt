@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     //create media player:
     lateinit var mediaPlayer: MediaPlayer
+    var isPlaying = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +31,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun prepareMusic() {
+        mediaPlayer = MediaPlayer.create(this,R.raw.besmellah_music)
+        mediaPlayer.start()
+        isPlaying = true
     }
 
     private fun configureVolume() {
