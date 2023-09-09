@@ -10,7 +10,7 @@
         android:id="@+id/txtTopPlaying"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:text="Now Playing"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,46 +20,175 @@
     </TextView>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="290dp"
         android:id="@+id/imgMusic"
+        android:layout_width="290dp"
         android:layout_height="290dp"
-        app:layout_constraintBottom_toTopOf="@id/lineaVasat"
+        android:layout_marginBottom="30dp"
         android:src="@drawable/cover"
+        app:layout_constraintBottom_toTopOf="@+id/lineaVasat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtTopPlaying">
+        app:layout_constraintStart_toStartOf="parent">
 
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <LinearLayout
-        app:layout_constraintTop_toBottomOf="@id/imgMusic"
-        android:gravity="center_horizontal"
         android:id="@+id/lineaVasat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
 
         <TextView
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Besmellah"
+            android:textColor="@color/white"
             android:textSize="32sp">
 
         </TextView>
 
         <TextView
-            android:textColor="@color/white_text"
-            android:layout_marginTop = "8dp"
-            android:textSize = "18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hiphopologist X Sinazza">
+            android:layout_marginTop="8dp"
+            android:text="Hiphopologist X Sinazza"
+            android:textColor="@color/white_text"
+            android:textSize="18sp">
 
         </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="150dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:value="40"
+            android:valueFrom="0"
+            android:valueTo="100"
+            app:labelBehavior="gone"
+            app:trackHeight="6dp">
+
+        </com.google.android.material.slider.Slider>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+
+            <TextView
+                android:id="@+id/txtLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="00:00"
+                android:textColor="@color/white">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/txtRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="00:00"
+                android:textColor="@color/white">
+
+            </TextView>
+
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout2">
+
+        <ImageView
+            android:id="@+id/btnVolumeOfOn"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:src="@drawable/ic_volume_on"
+            app:tint="@color/white">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/btnGoBefore"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="12dp"
+            android:padding="16dp"
+            android:src="@drawable/ic_before"
+            app:tint="@color/white">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/btnPlayPause"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/shape_play"
+            android:padding="16dp"
+            android:src="@drawable/ic_play"
+            app:tint="@color/black">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/btnGoAfter"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="12dp"
+            android:padding="16dp"
+            android:src="@drawable/ic_next"
+            app:tint="@color/white">
+
+        </ImageView>
+
+        <com.varunest.sparkbutton.SparkButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="16dp"
+            app:sparkbutton_activeImage="@drawable/ic_heart_selected"
+            app:sparkbutton_iconSize="20dp"
+            app:sparkbutton_inActiveImage="@drawable/ic_heart_not_selected"
+            app:sparkbutton_primaryColor="@color/colorRed"
+            app:sparkbutton_secondaryColor="@color/colorRed">
+
+        </com.varunest.sparkbutton.SparkButton>
 
     </LinearLayout>
 
