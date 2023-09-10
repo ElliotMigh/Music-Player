@@ -50,7 +50,8 @@ class MainActivity : AppCompatActivity() {
         timer.schedule(object : TimerTask() {
             override fun run() {
                 runOnUiThread {
-                    binding.txtLeft.text = convertMillisToString(mediaPlayer.currentPosition.toLong())
+                    //set value in slider:
+                    binding.sliderMain.value = mediaPlayer.currentPosition.toFloat()
                 }
             }
 
