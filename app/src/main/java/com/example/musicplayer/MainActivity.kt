@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     //create media player:
     lateinit var mediaPlayer: MediaPlayer
     var isPlaying = true
+    var isUserChanging = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +32,11 @@ class MainActivity : AppCompatActivity() {
         binding.btnGoAfter.setOnClickListener { goAfterMusic() }
         //click on btn volume on off:
         binding.btnVolumeOfOn.setOnClickListener { configureVolume() }
+
+        //add on slider change lister:
+        binding.sliderMain.addOnChangeListener { slider, value, fromUser ->
+            binding.txtLeft.text = convertMillisToString(value.toLong())
+        }
     }
 
     private fun prepareMusic() {
