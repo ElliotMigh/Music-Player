@@ -1,5 +1,8 @@
 package com.example.musicplayer
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.media.AudioManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mediaPlayer: MediaPlayer
     var isPlaying = true
     var isUserChanging = false
+    var isMute = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             isUserChanging = fromUser
         }
 
-        binding.sliderMain.addOnSliderTouchListener(object : Slider.OnSliderTouchListener{
+        binding.sliderMain.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
             override fun onStartTrackingTouch(slider: Slider) {
             }
 
@@ -77,7 +81,20 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("InlinedApi")
     private fun configureVolume() {
+        val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
+        if (isMute) {
+            audioManager.adjustVolume(AudioManager.ADJUST_UNMUTE, AudioManager.FLAG_SHOW_UI)
+            //change icon:
+            binding.btnVolumeOfOn.setImageResource(R.drawable.ic_volume_on)
+            isMute = false
+        } else {
+            audioManager.adjustVolume(AudioManager.ADJUST_MUTE, AudioManager.FLAG_SHOW_UI)
+            //change icon:
+            binding.btnVolumeOfOn.setImageResource(R.drawable.ic_volume_off)
+            isMute = true
+        }
     }
 
     private fun goAfterMusic() {
