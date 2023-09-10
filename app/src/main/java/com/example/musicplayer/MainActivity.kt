@@ -4,6 +4,7 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.musicplayer.databinding.ActivityMainBinding
+import com.google.android.material.slider.Slider
 import java.sql.Time
 import java.util.*
 
@@ -38,6 +39,16 @@ class MainActivity : AppCompatActivity() {
             binding.txtLeft.text = convertMillisToString(value.toLong())
             isUserChanging = fromUser
         }
+
+        binding.sliderMain.addOnSliderTouchListener(object : Slider.OnSliderTouchListener{
+            override fun onStartTrackingTouch(slider: Slider) {
+            }
+
+            override fun onStopTrackingTouch(slider: Slider) {
+                mediaPlayer.seekTo(slider.value.toInt())
+            }
+
+        })
     }
 
     private fun prepareMusic() {
