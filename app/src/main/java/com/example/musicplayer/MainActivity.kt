@@ -84,6 +84,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goBeforeMusic() {
+        val now = mediaPlayer.currentPosition
+        val newValue = now - 150000 //millis
+        mediaPlayer.seekTo(newValue)
     }
 
     private fun configureMusic() {
