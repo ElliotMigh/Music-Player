@@ -37,6 +37,10 @@ class MainActivity : AppCompatActivity() {
         isPlaying = true
 
         binding.btnPlayPause.setImageResource(R.drawable.ic_pause)
+
+        // set duration for slider value from:
+        binding.sliderMain.valueFrom = mediaPlayer.duration.toFloat()
+
     }
 
     private fun configureVolume() {

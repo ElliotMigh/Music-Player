@@ -82,7 +82,6 @@
             android:id="@+id/sliderMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:value="40"
             android:valueFrom="0"
             android:valueTo="100"
             app:labelBehavior="gone"
