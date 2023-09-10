@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         //add on slider change lister:
         binding.sliderMain.addOnChangeListener { slider, value, fromUser ->
             binding.txtLeft.text = convertMillisToString(value.toLong())
+            isUserChanging = fromUser
         }
     }
 
