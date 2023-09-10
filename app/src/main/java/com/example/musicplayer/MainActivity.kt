@@ -8,6 +8,7 @@ import com.example.musicplayer.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     //create binding:
     lateinit var binding: ActivityMainBinding
+
     //create media player:
     lateinit var mediaPlayer: MediaPlayer
     var isPlaying = true
@@ -31,9 +32,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun prepareMusic() {
-        mediaPlayer = MediaPlayer.create(this,R.raw.besmellah_music)
+        mediaPlayer = MediaPlayer.create(this, R.raw.besmellah_music)
         mediaPlayer.start()
         isPlaying = true
+
+        binding.btnPlayPause.setImageResource(R.drawable.ic_pause)
     }
 
     private fun configureVolume() {
@@ -46,5 +49,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configureMusic() {
+        if (isPlaying) {
+            mediaPlayer.pause()
+            binding.btnPlayPause.setImageResource(R.drawable.ic_play)
+            isPlaying = false
+        } else {
+            mediaPlayer.start()
+            binding.btnPlayPause.setImageResource(R.drawable.ic_pause)
+            isPlaying = true
+        }
     }
 }
