@@ -14,9 +14,9 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     //create binding:
     lateinit var binding: ActivityMainBinding
-
     //create media player:
     lateinit var mediaPlayer: MediaPlayer
+    lateinit var timer:Timer
     var isPlaying = true
     var isUserChanging = false
     var isMute = false
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         binding.txtRight.text = convertMillisToString(mediaPlayer.duration.toLong())
 
         //set timer:
-        val timer = Timer()
+        timer = Timer()
         timer.schedule(object : TimerTask() {
             override fun run() {
                 runOnUiThread {
@@ -126,5 +126,16 @@ class MainActivity : AppCompatActivity() {
         val minute = duration / (1000 * 60)
 
         return java.lang.String.format(Locale.US, "%02d:%02d", minute, second)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        mediaPlayer.isLooping = true
+
+        //cancel timer:
+        timer.cancel()
+        //release mediaPlayer:
+        mediaPlayer.release()
     }
 }
