@@ -4,6 +4,7 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.musicplayer.databinding.ActivityMainBinding
+import java.sql.Time
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -40,9 +41,20 @@ class MainActivity : AppCompatActivity() {
         binding.btnPlayPause.setImageResource(R.drawable.ic_pause)
 
         // set duration for slider value from:
-        binding.sliderMain.valueFrom = mediaPlayer.duration.toFloat()
+        binding.sliderMain.valueTo = mediaPlayer.duration.toFloat()
 
         binding.txtRight.text = convertMillisToString(mediaPlayer.duration.toLong())
+
+        //set timer:
+        val timer = Timer()
+        timer.schedule(object : TimerTask() {
+            override fun run() {
+                runOnUiThread {
+                    binding.txtLeft.text = convertMillisToString(mediaPlayer.currentPosition.toLong())
+                }
+            }
+
+        }, 1000, 1000)
 
     }
 
