@@ -4,6 +4,7 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.musicplayer.databinding.ActivityMainBinding
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     //create binding:
@@ -41,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         // set duration for slider value from:
         binding.sliderMain.valueFrom = mediaPlayer.duration.toFloat()
 
+        binding.txtRight.text = convertMillisToString(mediaPlayer.duration.toLong())
+
     }
 
     private fun configureVolume() {
@@ -62,5 +65,12 @@ class MainActivity : AppCompatActivity() {
             binding.btnPlayPause.setImageResource(R.drawable.ic_pause)
             isPlaying = true
         }
+    }
+
+    private fun convertMillisToString(duration: Long): String {
+        val second = duration / 1000 % 60
+        val minute = duration / (1000 * 60)
+
+        return java.lang.String.format(Locale.US, "%02d:%02d", minute, second)
     }
 }
